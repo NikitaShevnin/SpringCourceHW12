@@ -1,5 +1,7 @@
 package ru.gb.hwSem12.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
+import ru.gb.hwSem12.integration.UserRequestGateway;
 import ru.gb.hwSem12.model.Note;
 import ru.gb.hwSem12.services.NoteService;
 import io.micrometer.core.instrument.Counter;
@@ -21,9 +23,7 @@ import java.util.List;
 public class NoteController {
 
     private final Counter addNoteCounter = Metrics.counter("add_note_counte");
-
-
-
+    private final UserRequestGateway userRequestGateway;
     private final NoteService noteService;
     /**
      * Получить список всех заметок
@@ -96,5 +96,16 @@ public class NoteController {
     public ResponseEntity<Void> deleteNote(@PathVariable("id") Long id) {
         noteService.deleteNoteById(id);
         return ResponseEntity.ok().build();
+    }
+
+    public NoteController(NoteService noteService, UserRequestGateway userRequestGateway) {
+        this.noteService = noteService;
+        this.userRequestGateway = userRequestGateway;
+    }
+
+    @PostMapping
+    public Note createNote(@RequestBody Note note, HttpServletRequest request) {
+        userRequestGateway.saveUserRequest(request);
+        return noteService.createNote(note);
     }
 }
