@@ -7,6 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+/**
+ * Класс который будет отвечать за сохранение запросов в файл
+ */
 @Service
 public class UserRequestService {
 
