@@ -12,7 +12,6 @@ public class EmailNotificationObserver implements Observer {
 
     @Override
     public void update(Note note) {
-        // Здесь можно реализовать логику для отправки email-уведомления
         System.out.println("Отправляем email-уведомление на адрес " + email + " о изменении заметки: " + note);
     }
 }

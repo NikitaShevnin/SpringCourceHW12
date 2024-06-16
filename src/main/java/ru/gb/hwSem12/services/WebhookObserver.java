@@ -12,7 +12,6 @@ public class WebhookObserver implements Observer {
 
     @Override
     public void update(Note note) {
-        // Здесь можно реализовать логику для отправки webhook-уведомления
         System.out.println("Отправляем webhook-уведомление на URL " + webhookUrl + " о изменении заметки: " + note);
     }
 }

@@ -12,7 +12,6 @@ public class PushNotificationObserver implements Observer {
 
     @Override
     public void update(Note note) {
-        // Здесь можно реализовать логику для отправки push-уведомления
         System.out.println("Отправляем push-уведомление на устройство с токеном " + deviceToken + " о изменении заметки: " + note);
     }
 }

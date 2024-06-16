@@ -14,6 +14,5 @@ public class MyService {
 
     public void doSomething() {
         myCounter.increment();
-        // Ваша бизнес-логика
     }
 }
