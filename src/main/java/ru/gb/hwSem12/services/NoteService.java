@@ -73,6 +73,10 @@ public class NoteService {
             throw new IllegalArgumentException("Task not found with id: " + id);
         }
     }
+    public Note createNote(Note note) {
+        return noteRepository.save(note);
+    }
+
     /**
      * Получает список заметок по статусу.
      * @param status Статус заметок для поиска.
